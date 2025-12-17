@@ -1,20 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Recipe Finder
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <hr>
+  <div><strong>G00438823</strong> </div>
+  
+  <div class="ion-text-end">
 
+      <a href = "/favorites"> <img src="assets/icon/FavorIcon.png" style="width: 50px; height: 50px;" ></a>
+      <a href = "/settings"> <img src="assets/icon/settings.png" style="width: 50px; height: 50px;" > </a>
+     
+  </div>
+   <p>Project by Vasyl Melnychuk</p>
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong>Search</strong>
+    <ion-item>
+      
+      <ion-input type="text" placeholder="Enter ingredients" [(ngModel)]="ingredientInput"> </ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="Search()">
+    Search
+  </ion-button>
+  <p> {{userIngredients}}</p>
   </div>
 </ion-content>
