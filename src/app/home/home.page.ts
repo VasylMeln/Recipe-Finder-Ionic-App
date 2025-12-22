@@ -1,23 +1,67 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { IonButton, IonInput, IonItem, IonList } from '@ionic/angular/standalone';
+import { IonButton, IonInput, IonItem, IonList, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
+import { HttpConnection } from '../services/http-connection';
+import { HttpOptions, HttpParams } from '@capacitor/core/types/core-plugins';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent,IonInput, IonItem, IonList, IonButton, FormsModule],
+  imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonContent,IonInput, IonItem, IonList, IonButton, FormsModule, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle],
 })
 export class HomePage {
-  constructor() {}
-
-  userIngredients: string = '';
+  constructor(private connector: HttpConnection) {}
+  response:any; 
+  searchResults:any;
+  options!:HttpOptions;
+  
+  apiKey:string='70759a4f7911402abcc53d3c51d3b759';
+  //let params = new HttpParams().set('apiKey', this.apiKey).set('query','');
   ingredientInput: string = '';
+  userIngredients: string = '';
 
-  Search() {
-    this.userIngredients=this.ingredientInput;
-    
-
+  
+  
+  
+  ngOnInit() {
+    this.searchResults = [];
   }
+
+ async Search() {
+
+    
+    this.userIngredients=this.ingredientInput;
+    console.log("ingredientInput:" + this.ingredientInput);
+    this.options = {
+      url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${this.apiKey}&includeIngredients=${this.userIngredients}`,
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+
+    await this.query();
+    console.log("1 Response:" + this.response);
+    console.log("2 Response results:" + this.response.results);
+    this.searchResults = this.response.results;
+  }
+  
+
+
+  async query() {
+
+    try {
+    let res = await this.connector.get(this.options);
+    this.response = res.data;
+    console.log(this.response);
+    } catch (error) {
+      console.error ('HTTP Error:', error);
+    }
+  }
+
+
+
 }

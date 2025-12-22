@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonRadio, IonRadioGroup } from '@ionic/angular/standalone';
+import { LocalData } from '../services/local-data';
 
 @Component({
   selector: 'app-settings',
@@ -9,10 +10,27 @@ import { IonRadio, IonRadioGroup } from '@ionic/angular/standalone';
   imports: [IonRadio, IonRadioGroup, FormsModule],
 })
 export class SettingsComponent {
-
-  constructor() { }
   units: string = "Metric";
 
-  ngOnInit() {}
+  constructor(private ld: LocalData) { }
+  
 
+  ngOnInit() {
+    this.unitsUpdate();
+
+  }
+
+  async unitsUpdate() {
+    let savedUnits = await this.ld.get('units');
+
+    if (savedUnits != null) {this.units = savedUnits;}
+    else this.units = "Metric";
+    await this.ld.set ('units', this.units);
+  }
+
+  async onRadioChange (event: any) {
+    let radio = event.detail.value;
+    this.units = radio;
+    await this.ld.set ('units', radio);
+  }
 }

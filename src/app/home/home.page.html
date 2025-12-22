@@ -2,6 +2,13 @@
   <ion-toolbar>
     <ion-title>
       Recipe Finder
+      <ion-item>
+        
+          <ion-input type="text" placeholder="Enter ingredients" [(ngModel)]="ingredientInput"> </ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="Search()">
+          Search
+      </ion-button>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +16,14 @@
 <ion-content [fullscreen]="true">
   <hr>
   <div><strong>G00438823</strong> </div>
+  <div id="container">
+      <strong>Search results</strong>
+      
+    
+    <p> {{userIngredients}}</p>
   
+    <p> {{searchResults}}<p>
+   </div>
   <div class="ion-text-end">
 
       <a href = "/favorites"> <img src="assets/icon/FavorIcon.png" style="width: 50px; height: 50px;" ></a>
@@ -17,15 +31,21 @@
      
   </div>
    <p>Project by Vasyl Melnychuk</p>
-  <div id="container">
-    <strong>Search</strong>
-    <ion-item>
-      
-      <ion-input type="text" placeholder="Enter ingredients" [(ngModel)]="ingredientInput"> </ion-input>
-  </ion-item>
-  <ion-button expand="block" (click)="Search()">
-    Search
-  </ion-button>
-  <p> {{userIngredients}}</p>
+  
+  <div>
+    <strong>Search results:</strong>
+      <ion-card *ngFor = "let recipe of searchResults">
+          <img src="{{ recipe.image }}" />
+          <ion-card-header>
+            <ion-card-title> {{recipe.title}}</ion-card-title>
+            
+          </ion-card-header>
+        
+          <ion-button (click)="openDetails(recipe.id)">
+              Details
+          </ion-button>
+        </ion-card>
   </div>
+  
+    
 </ion-content>

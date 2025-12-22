@@ -1,5 +1,5 @@
 <p>
-    <ion-radio-group value="Settings" [(ngModel)]="units">
+    <ion-radio-group value="Settings" [(ngModel)]="units" (ionChange)="onRadioChange($event)">
         <ion-radio value="Metric">Metric</ion-radio><br />
         <ion-radio value="US">US</ion-radio><br />
       </ion-radio-group>
