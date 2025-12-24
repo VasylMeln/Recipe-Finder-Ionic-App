@@ -3,8 +3,10 @@ import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/stan
 import { IonButton, IonInput, IonItem, IonList, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { HttpConnection } from '../services/http-connection';
-import { HttpOptions, HttpParams } from '@capacitor/core/types/core-plugins';
+import { HttpOptions } from '@capacitor/core/types/core-plugins';
 import { CommonModule } from '@angular/common';
+import { LocalData } from '../services/local-data';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,13 +16,13 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonContent,IonInput, IonItem, IonList, IonButton, FormsModule, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle],
 })
 export class HomePage {
-  constructor(private connector: HttpConnection) {}
+  constructor(private connector: HttpConnection, private ld:LocalData, private router:Router) {}
   response:any; 
   searchResults:any;
   options!:HttpOptions;
   
   apiKey:string='70759a4f7911402abcc53d3c51d3b759';
-  //let params = new HttpParams().set('apiKey', this.apiKey).set('query','');
+  
   ingredientInput: string = '';
   userIngredients: string = '';
 
@@ -62,6 +64,10 @@ export class HomePage {
     }
   }
 
+  async openDetails(id: number) {
+    await this.ld.set('detailsID', id.toString());
+    this.router.navigateByUrl('/details');
 
+  }
 
 }
