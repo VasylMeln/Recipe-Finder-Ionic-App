@@ -1,3 +1,33 @@
-<p>
-  favorites works!
-</p>
+        
+      <ion-content>  
+      <div class="ion-text-end">
+
+      <a href = "/home"> <img src="assets/icon/home.png" style="width: 50px; height: 50px;" > </a>
+      <a href = "/settings"> <img src="assets/icon/settings.png" style="width: 50px; height: 50px;" > </a>
+      
+      </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" *ngFor = "let recipe of favRecipes">
+
+
+
+
+        <ion-card >
+          <img src="{{ recipe.image }}" style="display:block; margin:0 auto; border-radius:30px;  padding: 15px"/>
+          <ion-card-header>
+            <ion-card-title style="text-align:center;"> {{ recipe.title }}</ion-card-title>
+            
+          </ion-card-header>
+          <ion-card-content>
+          <ion-button (click)="openDetails(recipe.id)">
+              Details
+          </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+      </ion-content>

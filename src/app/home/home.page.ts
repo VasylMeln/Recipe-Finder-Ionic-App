@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { IonButton, IonInput, IonItem, IonList, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/angular/standalone';
+import { IonButton, IonInput, IonItem, IonList, IonCard, 
+IonCol, IonGrid, IonRow, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItemDivider, IonItemGroup, IonLabel } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { HttpConnection } from '../services/http-connection';
 import { HttpOptions } from '@capacitor/core/types/core-plugins';
@@ -13,7 +14,9 @@ import { Router } from '@angular/router';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonContent,IonInput, IonItem, IonList, IonButton, FormsModule, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle],
+  imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonContent,IonInput, IonItem, 
+  IonList, IonButton, FormsModule, IonCard, IonCardContent, IonCardHeader, 
+  IonCol, IonGrid, IonRow, IonCardSubtitle, IonCardTitle, IonItemDivider, IonLabel],
 })
 export class HomePage {
   constructor(private connector: HttpConnection, private ld:LocalData, private router:Router) {}

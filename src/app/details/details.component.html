@@ -4,9 +4,16 @@
   DetailsID: {{ detailsID }}
   {{ response1 }}
 </p>
+      <div class="ion-text-end">
+
+      <a href = "/home"> <img src="assets/icon/home.png" style="width: 50px; height: 50px;" > </a>
+      <a href = "/favorites"> <img src="assets/icon/FavorIcon.png" style="width: 50px; height: 50px;" ></a>
+      <a href = "/settings"> <img src="assets/icon/settings.png" style="width: 50px; height: 50px;" > </a>
+      
+      </div>
 
 <ion-card>
-    <img src="{{ response1?.image }}" style="display:block; margin:0 auto; border-radius:12px;" />
+    <img src="{{ response1?.image }}" style="display:block; margin:0 auto; border-radius:30px; padding: 15px" />
     <ion-card-header>
       <ion-card-title style="margin:0 auto;"><h1> {{ response1?.title }} </h1> </ion-card-title>
       <ion-card-subtitle> {{measure}} </ion-card-subtitle>

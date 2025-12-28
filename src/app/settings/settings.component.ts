@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonRadio, IonRadioGroup } from '@ionic/angular/standalone';
+import { IonRadio, IonRadioGroup,IonContent } from '@ionic/angular/standalone';
 import { LocalData } from '../services/local-data';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
-  imports: [IonRadio, IonRadioGroup, FormsModule],
+  imports: [IonRadio, IonRadioGroup, FormsModule, IonContent],
 })
 export class SettingsComponent {
   units: string = "Metric";

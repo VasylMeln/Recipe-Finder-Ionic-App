@@ -1,7 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Recipe Finder
+      <h1> Recipe Finder </h1>
+        
+        <div> <p>Project by Vasyl Melnychuk</p> <strong>G00438823</strong> 
+        
+        </div> 
+
+
+
+      <div class="ion-text-end">
+
+      <a href = "/favorites"> <img src="assets/icon/FavorIcon.png" style="width: 50px; height: 50px;" ></a>
+      <a href = "/settings"> <img src="assets/icon/settings.png" style="width: 50px; height: 50px;" > </a>
+     
+      </div>
       <ion-item>
         
           <ion-input type="text" placeholder="Enter ingredients" [(ngModel)]="ingredientInput"> </ion-input>
@@ -10,41 +23,46 @@
           Search
       </ion-button>
     </ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <hr>
-  <div><strong>G00438823</strong> </div>
-  <div id="container">
-      
-      
-    
-    <p> {{userIngredients}}</p>
-  
-    <p> {{searchResults}}<p>
-   </div>
-  <div class="ion-text-end">
 
-      <a href = "/favorites"> <img src="assets/icon/FavorIcon.png" style="width: 50px; height: 50px;" ></a>
-      <a href = "/settings"> <img src="assets/icon/settings.png" style="width: 50px; height: 50px;" > </a>
-     
-  </div>
-   <p>Project by Vasyl Melnychuk</p>
-  
+ 
   <div>
-    <strong>Search results:</strong>
-      <ion-card *ngFor = "let recipe of searchResults">
-          <img src="{{ recipe.image }}" />
+    
+
+        <ion-item-divider *ngIf = "searchResults.length>1">
+          <ion-label> SEARCH RESULTS: </ion-label>
+        </ion-item-divider>
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" *ngFor = "let recipe of searchResults">
+      
+          <ion-card >
+          <img src="{{ recipe.image }}" style="display:block; margin:0 auto; border-radius:30px; padding:15px"/>
           <ion-card-header>
-            <ion-card-title> {{recipe.title}}</ion-card-title>
+            <ion-card-title style="text-align:center;"> {{recipe.title}}</ion-card-title>
             
           </ion-card-header>
-        
-          <ion-button (click)="openDetails(recipe.id)">
+          <ion-card-content>
+            <ion-button (click)="openDetails(recipe.id)">
               Details
-          </ion-button>
+            </ion-button>
+          </ion-card-content>
         </ion-card>
+
+
+       </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+      
   </div>
   
     
