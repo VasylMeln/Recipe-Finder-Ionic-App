@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LocalData } from '../services/local-data';
 import { HttpConnection } from '../services/http-connection';
 import { HttpOptions } from '@capacitor/core/types/core-plugins';
-import { IonContent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, 
+import { IonHeader, IonToolbar, IonContent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, 
   IonCardTitle,  IonItemDivider, IonItemGroup, IonLabel, IonItem,IonCol, IonGrid, IonRow } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss'],
-  imports: [CommonModule, FormsModule, IonContent, IonButton, IonCard, 
+  imports: [IonHeader, IonToolbar, CommonModule, FormsModule, IonContent, IonButton, IonCard, 
     IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonItemDivider, IonItemGroup, 
     IonLabel, IonItem, IonCol, IonGrid, IonRow]
 

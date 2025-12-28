@@ -2,12 +2,11 @@
   <ion-toolbar>
     <ion-title>
 
-    <ion-item-divider color="medium">
-          <ion-label> <h1 > Recipe Finder </h1> </ion-label>
+      <ion-item-divider color="secondary">
+          <ion-label> <h1 > Recipe Finder </h1> by Vasyl Melnychuk <strong>G00438823</strong> </ion-label>
           
         </ion-item-divider>
-        <ion-item> <p> by Vasyl Melnychuk <strong>G00438823</strong> </p> </ion-item> 
-
+        
       
         
         
@@ -23,7 +22,7 @@
       </div>
       <ion-item>
         
-          <ion-input type="text" placeholder="Enter ingredients" [(ngModel)]="ingredientInput"> </ion-input>
+          <ion-input type="text" placeholder="Enter ingredients (separated by commas)" [(ngModel)]="ingredientInput"> </ion-input>
       </ion-item>
       <ion-button expand="block" (click)="Search()">
           Search
