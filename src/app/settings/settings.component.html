@@ -1,16 +1,36 @@
 <ion-content>
     <div class="ion-text-end">
 
-      <a href = "/home"> <img src="assets/icon/home.png" style="width: 50px; height: 50px;" > </a>
-      <a href = "/favorites"> <img src="assets/icon/FavorIcon.png" style="width: 50px; height: 50px;" ></a>
-     
-      
+      <a href = "/home"> <img src="assets/icon/home.png" style="width: 50px; height: 50px;  padding: 10px;" > </a>
+      <a href = "/favorites"> <img src="assets/icon/FavorIcon.png" style="width: 50px; height: 50px;  padding: 10px;" ></a>
+    
       </div>
+
+
+
+
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title color="dark">SETTINGS</ion-card-title>
+
+    <ion-item-divider color="warning">
+          <ion-label> Please select units used in recipes:</ion-label>
+        </ion-item-divider>
+
+
+    
+  </ion-card-header>
+
+  <ion-card-content>
     
     <ion-radio-group value="Settings" [(ngModel)]="units" (ionChange)="onRadioChange($event)">
         <ion-radio value="Metric">Metric</ion-radio><br />
         <ion-radio value="US">US</ion-radio><br />
       </ion-radio-group>
-      You selected: {{ units }} units
+      <!--Units selected: {{ units }} -->
 
+  </ion-card-content>
+</ion-card>
+    
 </ion-content>
